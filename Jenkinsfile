@@ -11,9 +11,17 @@ pipeline {
     {
       steps {
           withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MVN_HOME', mavenSettingsConfig: '', traceability: true) {
-          sh 'mvn clean package'
+          
+          withSonarQubeEnv(credentialsId: 'sonarconnection', installationName: 'sonarscanner' ) {
+             sh 'mvn package sonarqubeserver:sonarscanner'}
+                }
+          
+          
+          
           }
         }
+
+        
       }
 
     
@@ -21,4 +29,4 @@ pipeline {
       }
 
 
-    }
+    
