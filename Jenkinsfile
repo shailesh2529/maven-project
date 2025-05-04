@@ -13,7 +13,7 @@ pipeline {
           withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MVN_HOME', mavenSettingsConfig: '', traceability: true) {
           
           withSonarQubeEnv(credentialsId: 'sonarconnection', installationName: 'sonarscanner' ) {
-             sh 'mvn package sonarqubeserver:sonarscanner'}
+             sh 'mvn package sonarscanner:sonarqubeserver'}
                 }
           
           
@@ -21,7 +21,7 @@ pipeline {
           }
         }
 
-        
+
       }
 
     
