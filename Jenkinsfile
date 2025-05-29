@@ -8,7 +8,8 @@ pipeline {
         }
 
 
-        
+
+
         stage('code validate')
         {
             steps {
