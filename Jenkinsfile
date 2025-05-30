@@ -37,10 +37,10 @@ pipeline {
         stage('code deploy') {
             steps {
                 sshagent(['DEVCICD']) {
+                    sh 'ssh-keyscan -H 18.61.44.180 >> ~/.ssh/known_hosts'
                     sh 'scp /var/lib/jenkins/workspace/p1/webapp/target/webapp.war ec2-user@18.61.44.180:/usr/share/tomcat/webapps'
                 }
             }
         }
     }
-    
 }
