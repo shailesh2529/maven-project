@@ -38,7 +38,7 @@ pipeline {
         stage('code deploy') {
             steps {
                 sshagent(['DEVCICD']) {
-                    sh 'scp /var/lib/jenkins/workspace/p1/webapp/target/webapp.war ec2-user@18.61.44.180:/usr/share/tomcat/webapps'
+                    sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@172.31.5.104:/usr/share/tomcat/webapps'
                 }
             }
         }
